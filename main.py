@@ -1,5 +1,5 @@
 import psycopg2
-from COMP3005FinalProject.members import Member
+from members import Member
 from trainers import Trainer
 from staff import Staff
 
