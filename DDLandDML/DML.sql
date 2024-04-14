@@ -41,30 +41,3 @@ VALUES (1, 1, 'Monday', '09:00', 'Scheduled');
 INSERT INTO bookings (member_id, trainer_id, room_id, booking_time, booking_status, booking_type, class_id)
 VALUES (1, 1, 1, TIMESTAMP '2023-08-01 08:00:00', 'Confirmed', 'Group Class', 1);
 
-
-UPDATE members
-SET first_name = 'Jane', last_name = 'Doe', email = 'jane.doe@example.com', date_of_birth = '1990-05-15', gender = 'Female', fitness_goals = 'Gain muscle'
-WHERE member_id = 1;
-
-
-UPDATE trainers
-SET availability = '{"Monday": ["08:00-11:00", "13:00-16:00"]}'
-WHERE trainer_id = 1;
-
-
-UPDATE equipment
-SET maintenance_schedule = '2024-01-01'
-WHERE equipment_id = 1;
-
-
-UPDATE classes
-SET schedule = TIMESTAMP '2023-09-01 08:00:00'
-WHERE class_id = 1;
-
-
-DELETE FROM members
-WHERE member_id = 1;
-
-
-DELETE FROM trainers
-WHERE trainer_id = 1;
