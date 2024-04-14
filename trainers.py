@@ -10,7 +10,7 @@ class Trainer:
         first_name = input("Enter first name: ")
         last_name = input("Enter last name: ")
         email = input("Enter email: ")
-        password = input("Enter password: ")  # Consider hashing the password
+        password = input("Enter password: ")  
 
         try:
             with self.db_connection.cursor() as cursor:

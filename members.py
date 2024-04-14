@@ -14,7 +14,7 @@ class Member:
         gender = input("Enter gender: ")
         fitness_goals = input("Enter fitness goals: ")
 
-        # Get health metrics as a JSON string
+        # Get health metrics as a JSON string {"weight": 70, "height": 170}
         health_metrics_input = input("Enter health metrics (in JSON format): ")
         try:
             health_metrics = json.loads(health_metrics_input)
@@ -137,14 +137,12 @@ class Member:
                 member_info = cursor.fetchone()
 
                 if member_info:
-                    member_id = member_info[0]  # Assuming member_id is the first column
+                    member_id = member_info[0] 
                     print(f"\nMember Dashboard for {member_info[1]} {member_info[2]}:")
-                    # Print all member details
                     print(f"Member ID: {member_id}, Name: {member_info[1]} {member_info[2]}, Email: {member_info[3]}, "
                         f"DOB: {member_info[4]}, Gender: {member_info[5]}, Fitness Goals: {member_info[6]}, "
                         f"Health Metrics: {member_info[7]}")
 
-                    # Display training sessions with enhanced format
                     cursor.execute("""
                         SELECT s.session_id, s.session_day, s.session_time, t.first_name, t.last_name
                         FROM training_sessions s
@@ -159,7 +157,6 @@ class Member:
                     else:
                         print("No scheduled training sessions.")
 
-                    # Display class bookings with detailed format
                     cursor.execute("""
                         SELECT c.class_name, b.booking_time, b.booking_status
                         FROM bookings b
@@ -177,7 +174,7 @@ class Member:
                     print("No member found with that name.")
 
         except psycopg2.Error as e:
-            self.db_connection.rollback()  # Reset the transaction
+            self.db_connection.rollback()
             print(f"Database error: {e}")
 
     def schedule_training_session(self):
@@ -262,21 +259,7 @@ class Member:
             print("Training session cancelled successfully")
         except psycopg2.Error as e:
             print(f"Database error: {e}")
-
-    # def is_trainer_available(self, trainer_id, datetime):
-    #     try:
-    #         with self.db_connection.cursor() as cursor:
-    #             # Parse the datetime string to date and time
-    #             session_date, session_time = datetime.split(" ")
-    #             cursor.execute("""
-    #                 SELECT * FROM trainer_availability 
-    #                 WHERE trainer_id = %s AND day_of_week = TO_CHAR(TO_DATE(%s, 'YYYY-MM-DD'), 'Day')
-    #                 AND start_time <= %s::time AND end_time >= %s::time
-    #             """, (trainer_id, session_date, session_time, session_time))
-    #             return cursor.fetchone() is not None
-    #     except psycopg2.Error as e:
-    #         print(f"Database error: {e}")
-    #         return False
+            
         
     def reschedule_training_session(self):
         member_id = input("Enter your member ID: ")
