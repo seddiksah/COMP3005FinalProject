@@ -39,7 +39,7 @@ VALUES (1, 1, 'Monday', '09:00', 'Scheduled');
 
 
 INSERT INTO bookings (member_id, trainer_id, room_id, booking_time, booking_status, booking_type, class_id)
-VALUES (1, 1, 2, TIMESTAMP '2023-08-01 08:00:00', 'Confirmed', 'Group Class', 1);
+VALUES (1, 1, 1, TIMESTAMP '2023-08-01 08:00:00', 'Confirmed', 'Group Class', 1);
 
 
 UPDATE members
