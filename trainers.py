@@ -55,7 +55,7 @@ class Trainer:
                 cursor.execute("""
                     SELECT member_id, first_name, last_name, email, date_of_birth, gender, fitness_goals 
                     FROM members 
-                    WHERE first_name ILIKE %s OR last_name ILIKE %sstaff.py:
+                    WHERE first_name ILIKE %s OR last_name ILIKE %s
                 """, ('%' + member_name + '%', '%' + member_name + '%'))
                 profiles = cursor.fetchall()
                 if profiles:
