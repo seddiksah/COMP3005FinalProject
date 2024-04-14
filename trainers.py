@@ -28,6 +28,7 @@ class Trainer:
     def set_availability(self):
         print("\nSet Trainer Availability")
         trainer_id = input("Enter your trainer ID: ")
+        # Example JSON format: {"Monday": ["10:00", "11:00"], "Tuesday": ["12:00", "13:00"]}
         availability = input("Enter your availability in JSON format (days and times available): ")
         try:
             availability_json = json.loads(availability)
